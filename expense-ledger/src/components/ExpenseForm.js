@@ -3,16 +3,30 @@ import React, { useState } from 'react';
 function ExpenseForm({ addExpense }) {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
+  const [member, setMember] = useState('');
 
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    addExpense({ title, amount: parseFloat(amount), id: Date.now() });
+    if (!title || !amount || !member) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    const newExpense = {
+      title,
+      amount: parseFloat(amount),
+      member,
+      timestamp: new Date().toLocaleString()
+    };
+
+    addExpense(newExpense);
     setTitle('');
     setAmount('');
+    setMember('');
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit}>
       <div>
         <label>Title:</label>
         <input
@@ -28,6 +42,15 @@ function ExpenseForm({ addExpense }) {
           type="number"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label>Member:</label>
+        <input
+          type="text"
+          value={member}
+          onChange={(e) => setMember(e.target.value)}
           required
         />
       </div>
