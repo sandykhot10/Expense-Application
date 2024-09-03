@@ -1,0 +1,68 @@
+.expense-form {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+  }
+  
+  .expense-form h2 {
+    margin-top: 0;
+  }
+  
+  .expense-form table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .expense-form td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .expense-form label {
+    font-weight: bold;
+  }
+  
+  .expense-form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .expense-form .button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .expense-form .add-btn,
+  .expense-form .subtract-btn {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .expense-form .add-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .expense-form .add-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .expense-form .subtract-btn {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .expense-form .subtract-btn:hover {
+    background-color: #e53935;
+  }
+  

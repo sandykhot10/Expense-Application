@@ -9,219 +9,6 @@ body {
 .App {
   text-align: center;
   padding: 20px;
-}
-
-/* Header Styles */
-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
-}
-
-header h1 {
-  margin: 0;
-}
-
-/* Expense Form Styles */
-.expense-form {
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 500px;
-}
-
-.expense-form input,
-.expense-form select,
-.expense-form button {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.expense-form button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.expense-form button:hover {
-  background-color: #45a049;
-}
-
-/* Expense List Styles */
-.expense-list {
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 800px;
-}
-
-.expense-list table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.expense-list th,
-.expense-list td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.expense-list th {
-  background-color: #f2f2f2;
-}
-
-.expense-list tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.expense-list tr:hover {
-  background-color: #f1f1f1;
-}
-
-.expense-list button {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.expense-list button:hover {
-  background-color: #d32f2f;
-}
-
-/* Member Ledger Styles */
-.member-ledger {
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 800px;
-}
-
-.member-ledger h2 {
-  margin-top: 0;
-}
-
-.member-ledger table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.member-ledger th,
-.member-ledger td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.member-ledger th {
-  background-color: #f2f2f2;
-}
-
-.member-ledger tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.member-ledger tr:hover {
-  background-color: #f1f1f1;
-}
-
-.member-ledger .total-row {
-  font-weight: bold;
-}
-
-.member-ledger td {
-  color: #000;
-}
-
-.member-ledger td[data-type="expense"] {
-  color: green;
-}
-
-.member-ledger td[data-type="expense-negative"] {
-  color: red;
-}
-/* Expense Form Styles */
-.expense-form {
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 600px;
-}
-
-.expense-form h2 {
-  margin-top: 0;
-}
-
-.expense-form table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.expense-form td {
-  padding: 10px;
-  text-align: left;
-}
-
-.expense-form label {
-  font-weight: bold;
-}
-
-.expense-form input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.expense-form button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100%;
-}
-
-.expense-form button:hover {
-  background-color: #45a049;
-}
-
-
-
-
-
-/* General Styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f9;
-}
-
-.App {
-  text-align: center;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -274,18 +61,37 @@ header h1 {
   border-radius: 4px;
 }
 
-.expense-form button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100%;
+.expense-form .button-group {
+  display: flex;
+  justify-content: space-between;
 }
 
-.expense-form button:hover {
+.expense-form .add-btn,
+.expense-form .subtract-btn {
+  width: 48%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.expense-form .add-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.expense-form .add-btn:hover {
   background-color: #45a049;
+}
+
+.expense-form .subtract-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.expense-form .subtract-btn:hover {
+  background-color: #e53935;
 }
 
 /* Ledger Container Styles */
@@ -347,51 +153,47 @@ header h1 {
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 800px;
-}
-
-.member-ledger h2 {
-  margin-top: 0;
-}
-
-.member-ledger table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.member-ledger th,
-.member-ledger td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.member-ledger th {
-  background-color: #f2f2f2;
-}
-
-.member-ledger tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.member-ledger tr:hover {
-  background-color: #f1f1f1;
-}
-
-.member-ledger .total-row {
-  font-weight: bold;
-}
-
-.member-ledger td {
-  color: #000;
-}
-
-.member-ledger td[data-type="expense"] {
-  color: green;
-}
-
-.member-ledger td[data-type="expense-negative"] {
-  color: red;
-}
+  box-shadow: 0 0 10px rgba(
+    0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    text-align: left;
+  }
+  
+  .member-ledger h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  
+  .member-ledger table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .member-ledger th,
+  .member-ledger td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .member-ledger th {
+    background-color: #f2f2f2;
+  }
+  
+  .member-ledger tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .member-ledger tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .positive-amount {
+    color: green;
+  }
+  
+  .negative-amount {
+    color: red;
+  }
+  
