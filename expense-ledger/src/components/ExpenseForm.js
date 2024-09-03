@@ -1,62 +1,66 @@
 import React, { useState } from 'react';
 
-function ExpenseForm({ addExpense }) {
+const ExpenseForm = ({ addExpense }) => {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [member, setMember] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title || !amount || !member) {
-      alert("Please fill in all fields.");
-      return;
+    if (title && amount && member) {
+      addExpense({ title, amount: parseFloat(amount), member });
+      setTitle('');
+      setAmount('');
+      setMember('');
+    } else {
+      alert('Please fill out all fields');
     }
-
-    const newExpense = {
-      title,
-      amount: parseFloat(amount),
-      member,
-      timestamp: new Date().toLocaleString()
-    };
-
-    addExpense(newExpense);
-    setTitle('');
-    setAmount('');
-    setMember('');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Title:</label>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label>Amount:</label>
-        <input
-          type="number"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label>Member:</label>
-        <input
-          type="text"
-          value={member}
-          onChange={(e) => setMember(e.target.value)}
-          required
-        />
-      </div>
-      <button type="submit">Add Expense</button>
-    </form>
+    <div className="expense-form">
+      <h2>Add Expense</h2>
+      <form onSubmit={handleSubmit}>
+        <table>
+          <tbody>
+            <tr>
+              <td><label htmlFor="title">Title:</label></td>
+              <td><input
+                type="text"
+                id="title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              /></td>
+            </tr>
+            <tr>
+              <td><label htmlFor="amount">Amount:</label></td>
+              <td><input
+                type="number"
+                id="amount"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                step="0.01"
+              /></td>
+            </tr>
+            <tr>
+              <td><label htmlFor="member">Member:</label></td>
+              <td><input
+                type="text"
+                id="member"
+                value={member}
+                onChange={(e) => setMember(e.target.value)}
+              /></td>
+            </tr>
+            <tr>
+              <td colSpan="2">
+                <button type="submit">Add Expense</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
   );
-}
+};
 
 export default ExpenseForm;
