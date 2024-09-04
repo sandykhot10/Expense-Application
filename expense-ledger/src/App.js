@@ -62,7 +62,7 @@ function App() {
             <tr>
               <th>Title</th>
               <th>Total Amount</th>
-              <th>Member</th>
+              <th>Member Details</th>
             </tr>
           </thead>
           <tbody>
@@ -114,8 +114,8 @@ function App() {
              ))}
              <tr>
                <td colSpan="3"><strong>Total:</strong></td>
-               <td style={{ color: selectedMember.totalAmount < 0 ? 'red' : 'green' }}>
-                 {selectedMember.totalAmount < 0 ? '-' : '+'}${Math.abs(totalForMember).toFixed(2)}
+               <td style={{ color: totalForMember < 0 ? 'red' : 'green' }}>
+                 {totalForMember < 0 ? '-' : '+'}${Math.abs(totalForMember).toFixed(2)}
                </td>
              </tr>
            </tbody>
@@ -127,3 +127,4 @@ function App() {
 }
 
 export default App;
+
