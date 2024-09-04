@@ -21,7 +21,7 @@ function ExpenseList({ expenses, deleteExpense, selectMember }) {
             <th>Total Amount</th>
             <th>Member</th>
             <th>Timestamp</th>
-            <th>Actions</th>
+            
           </tr>
         </thead>
         <tbody>

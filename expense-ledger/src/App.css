@@ -197,3 +197,64 @@ header h1 {
     color: red;
   }
   
+
+/* General Styles */
+.ledger-container {
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.ledger-table th,
+.ledger-table td {
+  padding: 10px 15px;
+  /* border: 1px solid #ddd; */
+  text-align: center;
+}
+
+.ledger-table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.ledger-table td {
+  font-size: 14px;
+}
+
+.ledger-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.ledger-table tr:hover {
+  background-color: #e9ecef;
+}
+
+.ledger-table button {
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.ledger-table button:hover {
+  background-color: #0056b3;
+}
+
+#strong1 {
+  font-weight: bold;
+  margin-left: -250px;
+}
+
+#h21{
+  margin-left: -60px;
+}
