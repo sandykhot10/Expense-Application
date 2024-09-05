@@ -11,11 +11,11 @@
         <h2>Screenshots</h2>
         <div class="screenshot">
             <h3>Main Form</h3>
-            <img src="path_to_your_screenshot_form.png" alt="Main Form Screenshot">
+            <img src="1.png" alt="Main Form Screenshot">
         </div>
         <div class="screenshot">
             <h3>Member Ledger</h3>
-            <img src="path_to_your_screenshot_ledger.png" alt="Member Ledger Screenshot">
+            <img src="2.png" alt="Member Ledger Screenshot">
         </div>
         <div class="features">
             <h2>Features</h2>
