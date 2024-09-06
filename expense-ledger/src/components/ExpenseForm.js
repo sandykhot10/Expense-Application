@@ -1,26 +1,38 @@
 import React, { useState } from 'react';
-import './ExpenseForm.css';
 
-function ExpenseForm({ addExpense }) {
+function ExpenseForm({ addExpense, members }) {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [member, setMember] = useState('');
+  const [filteredMembers, setFilteredMembers] = useState([]);
+
+  const handleMemberChange = (e) => {
+    const value = e.target.value;
+    setMember(value);
+
+    if (value) {
+      // Filter members based on the input value
+      const filtered = members.filter((m) =>
+        m.toLowerCase().startsWith(value.toLowerCase())
+      );
+      setFilteredMembers(filtered);
+    } else {
+      setFilteredMembers([]);
+    }
+  };
+
+  const handleMemberSelect = (selectedMember) => {
+    setMember(selectedMember);
+    setFilteredMembers([]); // Hide the recommendations after selection
+  };
 
   const handleSubmit = (type) => {
-    const value = parseFloat(amount);
-    if (!title || !amount || !member || isNaN(value)) {
-      alert('Please fill out all fields correctly.');
-      return;
-    }
-
-    const finalAmount = type === 'subtract' ? -Math.abs(value) : Math.abs(value);
-
-    addExpense({
+    const newExpense = {
       title,
-      amount: finalAmount,
+      amount: type === 'subtract' ? -Math.abs(parseFloat(amount)) : parseFloat(amount),
       member,
-    });
-
+    };
+    addExpense(newExpense);
     setTitle('');
     setAmount('');
     setMember('');
@@ -66,8 +78,17 @@ function ExpenseForm({ addExpense }) {
                 type="text"
                 id="member"
                 value={member}
-                onChange={(e) => setMember(e.target.value)}
+                onChange={handleMemberChange}
               />
+              {filteredMembers.length > 0 && (
+                <ul className="recommendations">
+                  {filteredMembers.map((m) => (
+                    <li key={m} onClick={() => handleMemberSelect(m)}>
+                      {m}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </td>
           </tr>
           <tr>

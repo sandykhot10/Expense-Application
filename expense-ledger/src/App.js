@@ -49,12 +49,18 @@ function App() {
 
   const totalOverall = Object.values(groupedExpenses).reduce((total, amount) => total + amount, 0);
 
+  // Extract members for recommendation
+  const members = [...new Set(expenses.map(expense => expense.member))];
+
   return (
     <div className="App">
       <header>
         <h1>Expense Ledger</h1>
       </header>
-      <ExpenseForm addExpense={addExpense} />
+      
+      {/* Pass members array to ExpenseForm */}
+      <ExpenseForm addExpense={addExpense} members={members} />
+      
       <div className="ledger-container">
         <h2 id='h21'>Ledger</h2>
         <table className="ledger-table">
@@ -88,43 +94,42 @@ function App() {
       </div>
 
       {selectedMember && (
-         <div className="member-ledger">
-         <h2>{selectedMember}'s Ledger</h2>
-         <table>
-           <thead>
-             <tr>
-               <th>Title</th>
-               <th>Amount</th>
-               <th>Timestamp</th>
-               <th>Actions</th>
-             </tr>
-           </thead>
-           <tbody>
-             {memberLedger.map((expense) => (
-               <tr key={expense.id}>
-                 <td>{expense.title}</td>
-                 <td style={{ color: expense.amount < 0 ? 'red' : 'green' }}>
-                   {expense.amount < 0 ? '-' : '+'}${Math.abs(expense.amount).toFixed(2)}
-                 </td>
-                 <td>{new Date(expense.timestamp).toLocaleString()}</td>
-                 <td>
-                   <button onClick={() => deleteExpense(expense.id)}>Delete</button>
-                 </td>
-               </tr>
-             ))}
-             <tr>
-               <td colSpan="3"><strong>Total:</strong></td>
-               <td style={{ color: totalForMember < 0 ? 'red' : 'green' }}>
-                 {totalForMember < 0 ? '-' : '+'}${Math.abs(totalForMember).toFixed(2)}
-               </td>
-             </tr>
-           </tbody>
-         </table>
-       </div>
-     )}
-   </div>
- );
+        <div className="member-ledger">
+          <h2>{selectedMember}'s Ledger</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Amount</th>
+                <th>Timestamp</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {memberLedger.map((expense) => (
+                <tr key={expense.id}>
+                  <td>{expense.title}</td>
+                  <td style={{ color: expense.amount < 0 ? 'red' : 'green' }}>
+                    {expense.amount < 0 ? '-' : '+'}${Math.abs(expense.amount).toFixed(2)}
+                  </td>
+                  <td>{new Date(expense.timestamp).toLocaleString()}</td>
+                  <td>
+                    <button onClick={() => deleteExpense(expense.id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+              <tr>
+                <td colSpan="3"><strong>Total:</strong></td>
+                <td style={{ color: totalForMember < 0 ? 'red' : 'green' }}>
+                  {totalForMember < 0 ? '-' : '+'}${Math.abs(totalForMember).toFixed(2)}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default App;
-

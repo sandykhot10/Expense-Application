@@ -258,3 +258,20 @@ header h1 {
 #h21{
   margin-left: -60px;
 }
+
+
+.member-suggestions {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+.member-suggestions li {
+  padding: 8px 12px;
+  cursor: pointer; /* Make it look clickable */
+  transition: background-color 0.3s ease;
+}
+
+.member-suggestions li:hover {
+  background-color: #f0f0f0; /* Light background on hover */
+}
