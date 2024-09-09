@@ -33,7 +33,7 @@
             <li>Start the application using <code>npm start</code>.</li>
             <li>Use the form to add or subtract expenses and view member-specific ledgers.</li>
         </ol>
-        <a href="https://github.com/your-repo-url" class="cta-button">View on GitHub</a>
+        <a href="https:https://github.com/sandykhot10/Expense-Application" class="cta-button">View on GitHub</a>
         <div class="footer">
             <p>&copy; 2024 Ledger Book. All rights reserved.</p>
         </div>
