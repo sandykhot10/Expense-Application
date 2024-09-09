@@ -147,56 +147,100 @@ header h1 {
   background-color: #1976D2;
 }
 
-/* Member Ledger Styles */
+/* General Styles for Member Ledger */
 .member-ledger {
   margin: 20px auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(
-    0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 800px;
-    text-align: left;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 800px;
+  text-align: left;
+}
+
+/* Styles for table and text alignment */
+.member-ledger table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.member-ledger th,
+.member-ledger td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.member-ledger th {
+  background-color: #f2f2f2;
+}
+
+.member-ledger tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.member-ledger tr:hover {
+  background-color: #f1f1f1;
+}
+
+.positive-amount {
+  color: green;
+}
+
+.negative-amount {
+  color: red;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .member-ledger {
+    width: 100%;
+    padding: 10px;
   }
-  
-  .member-ledger h3 {
-    margin-top: 0;
-    margin-bottom: 15px;
-  }
-  
+
+  /* Adjust the table and text for mobile */
   .member-ledger table {
     width: 100%;
-    border-collapse: collapse;
+    font-size: 14px;
   }
-  
-  .member-ledger th,
+
+  .member-ledger th, 
   .member-ledger td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    font-size: 12px;
   }
-  
-  .member-ledger th {
-    background-color: #f2f2f2;
+
+  /* Align the 'Total' to the right and make sure it's not below */
+  .member-ledger tfoot td {
+    text-align: right;
   }
-  
-  .member-ledger tr:nth-child(even) {
-    background-color: #f9f9f9;
+
+  /* Fix button sizing */
+  .member-ledger button {
+    font-size: 10px;
+    padding: 4px 8px;
   }
-  
-  .member-ledger tr:hover {
-    background-color: #f1f1f1;
+}
+
+/* Additional adjustment for very small screens */
+@media (max-width: 576px) {
+  .member-ledger {
+    padding: 5px;
   }
-  
-  .positive-amount {
-    color: green;
+
+  .member-ledger th, 
+  .member-ledger td {
+    font-size: 10px;
+    padding: 6px;
   }
-  
-  .negative-amount {
-    color: red;
+
+  .member-ledger tfoot td {
+    font-size: 12px;
+    text-align: right;
   }
-  
+}
+
 
 /* General Styles */
 .ledger-container {
@@ -250,15 +294,6 @@ header h1 {
   background-color: #0056b3;
 }
 
-#strong1 {
-  font-weight: bold;
-  margin-left: -250px;
-}
-
-#h21{
-  margin-left: -60px;
-}
-
 
 .member-suggestions {
   list-style-type: none; /* Remove bullet points */
@@ -274,4 +309,20 @@ header h1 {
 
 .member-suggestions li:hover {
   background-color: #f0f0f0; /* Light background on hover */
+}
+
+
+
+.member-ledger button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.member-ledger button:hover {
+  background-color: #45a049;
 }
