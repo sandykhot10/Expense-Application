@@ -135,7 +135,7 @@ function App() {
             ))}
             <tr>
               <td colSpan="2"><strong>Total:</strong></td>
-              <td style={{ color: totalOverall < 0 ? 'red' : 'green' }}>
+                 <td style={{ textAlign: 'right', color: totalOverall < 0 ? 'red' : 'green' }}>
                 ${Math.abs(totalOverall).toFixed(2)}
               </td>
             </tr>

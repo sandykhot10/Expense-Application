@@ -1,12 +1,10 @@
-/* Container for the member's ledger */
+/* General container styles for ledger */
 .member-ledger {
-    margin: 20px auto;
+    margin-top: 20px;
     padding: 20px;
-    background-color: #fff; /* Changed to white for consistency */
+    background-color: #f9f9f9;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 800px; /* Adjusted max width for uniformity */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
   /* Style the ledger table */
@@ -23,7 +21,7 @@
   }
   
   .member-ledger th {
-    background-color: #f2f2f2;
+    background-color: #f1f1f1;
     font-weight: bold;
   }
   
@@ -31,7 +29,7 @@
     color: #333;
   }
   
-  /* Color code positive and negative amounts */
+  /* Positive and negative values color-coded */
   .member-ledger td span.positive {
     color: green;
   }
@@ -40,15 +38,15 @@
     color: red;
   }
   
-  /* Input and button container for modifying amounts */
+  /* Container for input and buttons */
   .modify-amount {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    gap: 10px; /* Space between input and buttons */
+    gap: 10px;
   }
   
-  /* Style for the input field */
+  /* Input field */
   .modify-amount input {
     padding: 10px;
     font-size: 1rem;
@@ -65,12 +63,12 @@
     border-radius: 4px;
     border: none;
     cursor: pointer;
-    background-color: #4CAF50; /* Add button color */
+    background-color: #4CAF50;
     color: white;
     transition: background-color 0.3s ease;
   }
   
-  /* Hover effects for add button */
+  /* Hover effects for buttons */
   .modify-amount button:hover {
     background-color: #45a049;
   }
@@ -79,9 +77,9 @@
     background-color: #3e8e41;
   }
   
-  /* Subtract button styling */
+  /* Styling for the subtract button */
   .modify-amount button:nth-child(3) {
-    background-color: #f44336; /* Subtract button color */
+    background-color: #f44336;
   }
   
   .modify-amount button:nth-child(3):hover {
@@ -92,19 +90,19 @@
     background-color: #d32f2f;
   }
   
-  /* Button for sharing ledger data */
+  /* Button for sharing the ledger */
   .member-ledger button {
     padding: 10px 20px;
     font-size: 1rem;
     border-radius: 4px;
     border: none;
     cursor: pointer;
-    background-color: #007BFF; /* Share button color */
+    background-color: #007BFF;
     color: white;
     transition: background-color 0.3s ease;
   }
   
-  /* Hover effects for share button */
+  /* Hover effects for the share button */
   .member-ledger button:hover {
     background-color: #0069d9;
   }
@@ -115,22 +113,57 @@
   
   /* Responsive design for smaller screens */
   @media (max-width: 768px) {
+    /* Table adapts for mobile screens */
     .member-ledger table, .member-ledger th, .member-ledger td {
       font-size: 0.9rem;
       padding: 10px;
     }
   
-    .modify-amount input {
-      width: 100%;
-    }
-  
+    /* Stack the input and buttons on smaller screens */
     .modify-amount {
       flex-direction: column;
       align-items: stretch;
     }
   
+    /* Input takes full width on smaller screens */
+    .modify-amount input {
+      width: 100%;
+    }
+  
+    /* Buttons take full width on smaller screens */
     .modify-amount button {
       width: 100%;
+      margin-bottom: 10px; /* Add some spacing between stacked buttons */
+    }
+  
+    /* Reduce padding for smaller screen visibility */
+    .member-ledger {
+      padding: 15px;
+    }
+  }
+  
+  /* Extra small screens (<480px) */
+  @media (max-width: 480px) {
+    /* Further reduce table font size for very small screens */
+    .member-ledger table, .member-ledger th, .member-ledger td {
+      font-size: 0.8rem;
+      padding: 8px;
+    }
+  
+    /* Reduce overall padding for smaller screens */
+    .member-ledger {
+      padding: 10px;
+    }
+  
+    /* Adjust input size */
+    .modify-amount input {
+      font-size: 0.9rem;
+      padding: 8px;
+    }
+  
+    /* Adjust button padding */
+    .modify-amount button {
+      padding: 8px 12px;
     }
   }
   
