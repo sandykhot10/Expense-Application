@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import ExpenseForm from './components/ExpenseForm'; // Ensure this path is correct
-import ExpenseList from './components/ExpenseList'; // Ensure this path is correct
+import ExpenseForm from './components/ExpenseForm';
 import MemberLedger from './components/MemberLedger';
+import './components/MemberLedger.css';
 import './App.css';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable'; // Import this for the autoTable functionality
 
 function App() {
   const [expenses, setExpenses] = useState(() => {
@@ -16,20 +18,18 @@ function App() {
   }, [expenses]);
 
   const addExpense = (newExpense) => {
-    setExpenses((prevExpenses) => [
-      ...prevExpenses,
-      {
-        ...newExpense,
-        id: Date.now(),
-        timestamp: new Date().toLocaleString(),
-      },
-    ]);
+    const newExpenseWithTimestamp = {
+      ...newExpense,
+      id: Date.now(),
+      timestamp: new Date().toISOString(),
+    };
+    setExpenses((prevExpenses) => [...prevExpenses, newExpenseWithTimestamp]);
   };
 
   const deleteExpense = (id) => {
     setExpenses(expenses.filter((expense) => expense.id !== id));
   };
-  
+
   const selectMember = (member) => {
     setSelectedMember(member);
   };
@@ -43,76 +43,76 @@ function App() {
     0
   );
 
+  const updateMemberExpense = (amount, title) => {
+    const newExpense = {
+      id: Date.now(),
+      member: selectedMember,
+      title: title || 'Manual Adjustment',
+      amount: amount,
+      timestamp: new Date().toISOString(),
+    };
+    setExpenses((prevExpenses) => [...prevExpenses, newExpense]);
+  };
+
+  const exportLedgerDataAsCSV = () => {
+    const csvRows = [];
+    const headers = ['Title', 'Amount', 'Timestamp'];
+    csvRows.push(headers.join(','));
+
+    memberLedger.forEach(expense => {
+      const row = [
+        expense.title,
+        expense.amount,
+        new Date(expense.timestamp).toLocaleString(),
+      ];
+      csvRows.push(row.join(','));
+    });
+
+    const csvString = csvRows.join('\n');
+    const blob = new Blob([csvString], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${selectedMember}_ledger.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const exportLedgerDataAsPDF = () => {
+    const doc = new jsPDF();
+    const headers = [['Title', 'Amount', 'Timestamp']];
+    const rows = memberLedger.map(expense => [
+      expense.title,
+      expense.amount,
+      new Date(expense.timestamp).toLocaleString(),
+    ]);
+
+    doc.autoTable({
+      head: headers,
+      body: rows,
+    });
+
+    doc.save(`${selectedMember}_ledger.pdf`);
+  };
+
   const groupedExpenses = expenses.reduce((acc, curr) => {
     acc[curr.member] = (acc[curr.member] || 0) + curr.amount;
     return acc;
   }, {});
 
   const totalOverall = Object.values(groupedExpenses).reduce((total, amount) => total + amount, 0);
-
-  // Extract members for recommendation
   const members = [...new Set(expenses.map(expense => expense.member))];
-
-  const [downloadLink, setDownloadLink] = useState(null); // State to store the share link
-
-  const exportLedgerData = () => {
-    const totalAmount = memberLedger.reduce((sum, expense) => sum + expense.amount, 0);
-  
-    // Determine message based on total amount
-    const message = totalAmount >= 0
-      ? `You should pay ${totalAmount}`
-      : `I will pay you ${Math.abs(totalAmount)}`;
-
-      // Determine the note based on total amount
-  const note = totalAmount >= 0
-  ? 'AMOUNT PAID BY ME'
-  : 'GIVING AMOUNT BY YOU';
-
-    const csvRows = [
-      ['Title', 'Amount', 'Timestamp'], // Header row
-      ...memberLedger.map(expense => [
-        expense.title,
-        expense.amount,
-        new Date(expense.timestamp).toLocaleString()
-      ]),
-      ['', 'Total', totalAmount] // Add total row
-    ];
-  
-    const csvContent = csvRows.map(row => row.join(',')).join('\n');
-    const blob = new Blob([csvContent], { type: 'text/csv' });
-    const file = new File([blob], `${selectedMember}_ledger.csv`, { type: 'text/csv' });
-  
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      // Use Web Share API to share the file
-      navigator
-        .share({
-          title: `${selectedMember}'s Ledger`,
-          text: `Sharing ${selectedMember}'s ledger data. ${message}`,
-          files: [file],
-        })
-        .then(() => console.log('Share successful!'))
-        .catch((error) => console.error('Error sharing:', error));
-    } else {
-      // Fallback: Download the file locally
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `${selectedMember}_ledger.csv`;
-      link.click();
-    }
-  };
 
   return (
     <div className="App">
       <header>
         <h1>Expense Ledger</h1>
       </header>
-      
-      {/* Pass members array to ExpenseForm */}
       <ExpenseForm addExpense={addExpense} members={members} />
-      
       <div className="ledger-container">
-        <h2 id='h21'>Ledger</h2>
+        <h2>Ledger</h2>
         <table className="ledger-table">
           <thead>
             <tr>
@@ -134,7 +134,7 @@ function App() {
               </tr>
             ))}
             <tr>
-              <td colSpan="2"><strong id='strong1'>Total:</strong></td>
+              <td colSpan="2"><strong>Total:</strong></td>
               <td style={{ color: totalOverall < 0 ? 'red' : 'green' }}>
                 ${Math.abs(totalOverall).toFixed(2)}
               </td>
@@ -144,42 +144,18 @@ function App() {
       </div>
 
       {selectedMember && (
-    <div className="member-ledger">
-      <h2>{selectedMember}'s Ledger</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Amount</th>
-            <th>Timestamp</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {memberLedger.map((expense) => (
-            <tr key={expense.id}>
-              <td>{expense.title}</td>
-              <td style={{ color: expense.amount < 0 ? 'red' : 'green' }}>
-                {expense.amount < 0 ? '-' : '+'}${Math.abs(expense.amount).toFixed(2)}
-              </td>
-              <td>{new Date(expense.timestamp).toLocaleString()}</td>
-              <td>
-                <button onClick={() => deleteExpense(expense.id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-          <tr>
-            <td colSpan="3"><strong>Total:</strong></td>
-            <td style={{ color: totalForMember < 0 ? 'red' : 'green' }}>
-              {totalForMember < 0 ? '-' : '+'}${Math.abs(totalForMember).toFixed(2)}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <button onClick={exportLedgerData}>Share Ledger Data</button>
+        <MemberLedger
+          selectedMember={selectedMember}
+          memberLedger={memberLedger}
+          totalForMember={totalForMember}
+          deleteExpense={deleteExpense}
+          updateMemberExpense={updateMemberExpense}
+          exportLedgerDataAsCSV={exportLedgerDataAsCSV} // Pass CSV function
+          exportLedgerDataAsPDF={exportLedgerDataAsPDF} // Pass PDF function
+        />
+      )}
     </div>
-  )}
-</div>
   );
 }
+
 export default App;

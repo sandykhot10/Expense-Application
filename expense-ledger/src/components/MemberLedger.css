@@ -1,0 +1,136 @@
+/* Container for the member's ledger */
+.member-ledger {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* Changed to white for consistency */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px; /* Adjusted max width for uniformity */
+  }
+  
+  /* Style the ledger table */
+  .member-ledger table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .member-ledger th, .member-ledger td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .member-ledger th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .member-ledger td {
+    color: #333;
+  }
+  
+  /* Color code positive and negative amounts */
+  .member-ledger td span.positive {
+    color: green;
+  }
+  
+  .member-ledger td span.negative {
+    color: red;
+  }
+  
+  /* Input and button container for modifying amounts */
+  .modify-amount {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px; /* Space between input and buttons */
+  }
+  
+  /* Style for the input field */
+  .modify-amount input {
+    padding: 10px;
+    font-size: 1rem;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Buttons for adding and subtracting amounts */
+  .modify-amount button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background-color: #4CAF50; /* Add button color */
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effects for add button */
+  .modify-amount button:hover {
+    background-color: #45a049;
+  }
+  
+  .modify-amount button:active {
+    background-color: #3e8e41;
+  }
+  
+  /* Subtract button styling */
+  .modify-amount button:nth-child(3) {
+    background-color: #f44336; /* Subtract button color */
+  }
+  
+  .modify-amount button:nth-child(3):hover {
+    background-color: #e53935;
+  }
+  
+  .modify-amount button:nth-child(3):active {
+    background-color: #d32f2f;
+  }
+  
+  /* Button for sharing ledger data */
+  .member-ledger button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background-color: #007BFF; /* Share button color */
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effects for share button */
+  .member-ledger button:hover {
+    background-color: #0069d9;
+  }
+  
+  .member-ledger button:active {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .member-ledger table, .member-ledger th, .member-ledger td {
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+  
+    .modify-amount input {
+      width: 100%;
+    }
+  
+    .modify-amount {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .modify-amount button {
+      width: 100%;
+    }
+  }
+  
