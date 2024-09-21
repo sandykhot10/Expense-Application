@@ -15,7 +15,7 @@
         </div>
         <div class="screenshot">
             <h3>Member Ledger</h3>
-            <img src="2.png" alt="Member Ledger Screenshot">
+            <img src="3.png" alt="Member Ledger Screenshot">
         </div>
         <div class="features">
             <h2>Features</h2>
@@ -33,7 +33,7 @@
             <li>Start the application using <code>npm start</code>.</li>
             <li>Use the form to add or subtract expenses and view member-specific ledgers.</li>
         </ol>
-        <a href="https://github.com/your-repo-url" class="cta-button">View on GitHub</a>
+        <a href="https://github.com/sandykhot10/Expense-Application.git" class="cta-button">View on GitHub</a>
         <div class="footer">
             <p>&copy; 2024 Ledger Book. All rights reserved.</p>
         </div>
