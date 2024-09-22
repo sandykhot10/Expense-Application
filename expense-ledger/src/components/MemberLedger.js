@@ -34,6 +34,23 @@ function MemberLedger({ selectedMember, memberLedger, totalForMember, deleteExpe
   return (
     <div className="member-ledger">
       <h2>{selectedMember}'s Ledger</h2>
+      {/* Input field for adding or subtracting amounts */}
+      <div className="modify-amount">
+        <input
+          type="text"
+          placeholder="Enter title"
+          value={inputTitle}
+          onChange={handleTitleChange}
+        />
+        <input
+          type="number"
+          placeholder="Enter amount"
+          value={inputAmount}
+          onChange={handleAmountChange}
+        />
+        <button onClick={handleAddAmount}>Add</button>
+        <button onClick={handleSubtractAmount}>Subtract</button>
+      </div>
       <table>
         <thead>
           <tr>
@@ -64,27 +81,9 @@ function MemberLedger({ selectedMember, memberLedger, totalForMember, deleteExpe
           </tr>
         </tbody>
       </table>
-
-      {/* Input field for adding or subtracting amounts */}
-      <div className="modify-amount">
-        <input
-          type="text"
-          placeholder="Enter title"
-          value={inputTitle}
-          onChange={handleTitleChange}
-        />
-        <input
-          type="number"
-          placeholder="Enter amount"
-          value={inputAmount}
-          onChange={handleAmountChange}
-        />
-        <button onClick={handleAddAmount}>Add</button>
-        <button onClick={handleSubtractAmount}>Subtract</button>
-      </div>
-
       {/* <button onClick={exportLedgerDataAsCSV}>Share Ledger as CSV</button> */}
       <button onClick={exportLedgerDataAsPDF}>Share Ledger as PDF</button>
+
     </div>
   );
 }

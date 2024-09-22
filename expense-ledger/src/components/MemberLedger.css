@@ -1,169 +1,175 @@
 /* General container styles for ledger */
 .member-ledger {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Style the ledger table */
-  .member-ledger table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  .member-ledger th, .member-ledger td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .member-ledger th {
-    background-color: #f1f1f1;
-    font-weight: bold;
-  }
-  
-  .member-ledger td {
-    color: #333;
-  }
-  
-  /* Positive and negative values color-coded */
-  .member-ledger td span.positive {
-    color: green;
-  }
-  
-  .member-ledger td span.negative {
-    color: red;
-  }
-  
-  /* Container for input and buttons */
-  .modify-amount {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    gap: 10px;
-  }
-  
-  /* Input field */
-  .modify-amount input {
-    padding: 10px;
-    font-size: 1rem;
-    width: 200px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Buttons for adding and subtracting amounts */
-  .modify-amount button {
-    padding: 10px 15px;
-    font-size: 1rem;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Hover effects for buttons */
-  .modify-amount button:hover {
-    background-color: #45a049;
-  }
-  
-  .modify-amount button:active {
-    background-color: #3e8e41;
-  }
-  
-  /* Styling for the subtract button */
-  .modify-amount button:nth-child(3) {
-    background-color: #f44336;
-  }
-  
-  .modify-amount button:nth-child(3):hover {
-    background-color: #e53935;
-  }
-  
-  .modify-amount button:nth-child(3):active {
-    background-color: #d32f2f;
-  }
-  
-  /* Button for sharing the ledger */
-  .member-ledger button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    background-color: #007BFF;
-    color: white;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Hover effects for the share button */
-  .member-ledger button:hover {
-    background-color: #0069d9;
-  }
-  
-  .member-ledger button:active {
-    background-color: #0056b3;
-  }
-  
-  /* Responsive design for smaller screens */
-  @media (max-width: 768px) {
-    /* Table adapts for mobile screens */
-    .member-ledger table, .member-ledger th, .member-ledger td {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 100%; /* Ensure it doesn't overflow */
+  box-sizing: border-box; /* Ensure padding is included in width calculations */
+}
+
+/* Style the ledger table */
+.member-ledger table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.member-ledger th, .member-ledger td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.member-ledger th {
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+
+.member-ledger td {
+  color: #333;
+}
+
+/* Positive and negative values color-coded */
+.member-ledger td span.positive {
+  color: green;
+}
+
+.member-ledger td span.negative {
+  color: red;
+}
+
+/* Container for input and buttons */
+.modify-amount {
+  display: flex;
+  flex-direction: column; /* Change to column to prevent overflow */
+  gap: 10px;
+  width: 100%; /* Ensure container takes full width */
+  box-sizing: border-box; /* Include padding in width calculations */
+}
+
+/* Input field */
+.modify-amount input {
+  padding: 10px;
+  font-size: 1rem;
+  width: 100%; /* Make input box full width */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+/* Buttons for adding and subtracting amounts */
+.modify-amount button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Make buttons full width to prevent overflow */
+}
+
+/* Hover effects for buttons */
+.modify-amount button:hover {
+  background-color: #45a049;
+}
+
+.modify-amount button:active {
+  background-color: #3e8e41;
+}
+
+/* Styling for the subtract button */
+.modify-amount button:nth-child(3) {
+  background-color: #f44336;
+}
+
+.modify-amount button:nth-child(3):hover {
+  background-color: #e53935;
+}
+
+.modify-amount button:nth-child(3):active {
+  background-color: #d32f2f;
+}
+
+/* Button for sharing the ledger */
+.member-ledger button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: #007BFF;
+  color: white;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Ensure full width for the share button */
+}
+
+/* Hover effects for the share button */
+.member-ledger button:hover {
+  background-color: #0069d9;
+}
+
+.member-ledger button:active {
+  background-color: #0056b3;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  /* Table adapts for mobile screens */
+  .member-ledger table, .member-ledger th, .member-ledger td {
       font-size: 0.9rem;
       padding: 10px;
-    }
-  
-    /* Stack the input and buttons on smaller screens */
-    .modify-amount {
+  }
+
+  /* Stack the input and buttons on smaller screens */
+  .modify-amount {
       flex-direction: column;
       align-items: stretch;
-    }
-  
-    /* Input takes full width on smaller screens */
-    .modify-amount input {
+  }
+
+  /* Input takes full width on smaller screens */
+  .modify-amount input {
       width: 100%;
-    }
-  
-    /* Buttons take full width on smaller screens */
-    .modify-amount button {
+  }
+
+  /* Buttons take full width on smaller screens */
+  .modify-amount button {
       width: 100%;
       margin-bottom: 10px; /* Add some spacing between stacked buttons */
-    }
-  
-    /* Reduce padding for smaller screen visibility */
-    .member-ledger {
-      padding: 15px;
-    }
   }
-  
-  /* Extra small screens (<480px) */
-  @media (max-width: 480px) {
-    /* Further reduce table font size for very small screens */
-    .member-ledger table, .member-ledger th, .member-ledger td {
+
+  /* Reduce padding for smaller screen visibility */
+  .member-ledger {
+      padding: 15px;
+  }
+}
+
+/* Extra small screens (<480px) */
+@media (max-width: 480px) {
+  /* Further reduce table font size for very small screens */
+  .member-ledger table, .member-ledger th, .member-ledger td {
       font-size: 0.8rem;
       padding: 8px;
-    }
-  
-    /* Reduce overall padding for smaller screens */
-    .member-ledger {
+  }
+
+  /* Reduce overall padding for smaller screens */
+  .member-ledger {
       padding: 10px;
-    }
-  
-    /* Adjust input size */
-    .modify-amount input {
+  }
+
+  /* Adjust input size */
+  .modify-amount input {
       font-size: 0.9rem;
       padding: 8px;
-    }
-  
-    /* Adjust button padding */
-    .modify-amount button {
-      padding: 8px 12px;
-    }
+      width: 100%; /* Full width for very small screens */
   }
-  
+
+  /* Adjust button padding */
+  .modify-amount button {
+      padding: 8px 12px;
+  }
+}
