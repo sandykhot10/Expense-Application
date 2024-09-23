@@ -84,11 +84,11 @@
 
 /* Styling for the subtract button */
 .modify-amount button:nth-child(3) {
-  background-color: #f44336;
+  background-color: #57c96a;
 }
 
 .modify-amount button:nth-child(3):hover {
-  background-color: #e53935;
+  background-color: #38920f;
 }
 
 .modify-amount button:nth-child(3):active {
@@ -102,7 +102,7 @@
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  background-color: #007BFF;
+  background-color: #e27171;
   color: white;
   transition: background-color 0.3s ease;
   width: 100%; /* Ensure full width for the share button */
@@ -110,7 +110,7 @@
 
 /* Hover effects for the share button */
 .member-ledger button:hover {
-  background-color: #0069d9;
+  background-color: #de2b2b;
 }
 
 .member-ledger button:active {
