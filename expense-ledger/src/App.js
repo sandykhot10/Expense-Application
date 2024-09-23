@@ -83,17 +83,38 @@ function App() {
   const exportLedgerDataAsPDF = () => {
     const doc = new jsPDF();
     const headers = [['Title', 'Amount', 'Timestamp']];
+  
+    // Create rows for each expense
     const rows = memberLedger.map(expense => [
       expense.title,
       expense.amount,
       new Date(expense.timestamp).toLocaleString(),
     ]);
-
+  
+    // Add table to the document
     doc.autoTable({
       head: headers,
       body: rows,
     });
-
+  
+    // Calculate total
+    const total = totalForMember;
+  
+    // Set the position for the total message
+    const finalY = doc.lastAutoTable.finalY || 10;
+  
+    // Check if the total is positive or negative
+    if (total > 0) {
+      // Positive total: "YOU SHOULD PAY ME"
+      doc.setTextColor(255, 0, 0); // Red color
+      doc.text(`YOU SHOULD PAY ME: $${total.toFixed(2)}`, 14, finalY + 10);
+    } else {
+      // Negative total: "I WILL PAY YOU"
+      doc.setTextColor(0, 128, 0); // Green color
+      doc.text(`I WILL PAY YOU: $${Math.abs(total).toFixed(2)}`, 14, finalY + 10);
+    }
+  
+    // Save the PDF with the member's name and ledger
     doc.save(`${selectedMember}_ledger.pdf`);
   };
 
