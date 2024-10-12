@@ -15,7 +15,7 @@
         </div>
         <div class="screenshot">
             <h3>Member Ledger</h3>
-            <img src="3.png" alt="Member Ledger Screenshot">
+            <img src="4.png" alt="Member Ledger Screenshot">
         </div>
         <div class="features">
             <h2>Features</h2>
